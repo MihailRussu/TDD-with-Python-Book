@@ -7,7 +7,7 @@ browser = webdriver.Firefox()
 browser.get('http://localhost:8000')
 
 # see if the title contains "Django" 
-assert 'Django' in browser.title
+assert 'To-Do' in browser.title, "Browser title was: " + browser.title
 
 # see of the page contains input element
 
