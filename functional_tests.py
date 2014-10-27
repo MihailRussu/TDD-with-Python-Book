@@ -1,27 +1,37 @@
 from selenium import webdriver
+import unittest
 
-# initialize the browser object
-browser = webdriver.Firefox()
 
-# open the browser with our ptoject
-browser.get('http://localhost:8000')
+class NewVisitorTest(unittest.TestCase):
 
-# see if the title contains "Django" 
-assert 'To-Do' in browser.title, "Browser title was: " + browser.title
+    def setUp(self):
+        self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
 
-# see of the page contains input element
+    def tearDown(self):
+        self.browser.quit()
 
-# try to type something in that input
+    def test_can_start_a_list_and_retrieve_it_later(self):
+        # open the browser with our ptoject
+        self.browser.get('http://localhost:8000')
 
-# try to hit "Enter" after typing and see if what was typed showed up
+        # see if the title contains "To-Do"
+        self.assertIn('To-Do', self.browser.title)
+        self.fail('Finish the test!')
 
-# try to add another item
+        # see of the page contains input element
 
-# see if the page now has both items
+        # try to type something in that input
 
-# try to navigate to one item's url
+        # try to hit "Enter" after typing and see if what was typed showed up
 
-# see if the navigated url contains everything
+        # try to add another item
 
-# quit the browser
-browser.quit()
+        # see if the page now has both items
+
+        # try to navigate to one item's url
+
+        # see if the navigated url contains everything
+
+if __name__ == '__main__':
+    unittest.main(warnings='ignore')
